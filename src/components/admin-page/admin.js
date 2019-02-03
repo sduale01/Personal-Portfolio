@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import AdminProjects from './adminProjects.js';
 
 class Admin extends Component {
     constructor() {
@@ -126,6 +127,7 @@ class Admin extends Component {
                     <textarea onChange={this.handleDescriptionChange} name="descripton" rows="5" cols="80"></textarea>
                     <button>Submit</button>
                 </form>
+                <AdminProjects />
             </div>
         )
     }
