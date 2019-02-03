@@ -13,6 +13,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={projectsList}/>
+            <Route exact path="/admin" component={Admin}/>
           </div>
         </Router>
         {/* <Admin /> */}
