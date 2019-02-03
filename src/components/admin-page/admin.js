@@ -98,10 +98,15 @@ class Admin extends Component {
             }
         });   
     }
+
+    backToProjects = () => {
+        this.props.history.push('/');
+    }
     render() {
         return(
             <div>
                 <h1>Admin</h1>
+                <button onClick={this.backToProjects}>Back to Projects</button>
                 <h2>Add New Project</h2>
                 <form onSubmit={this.submitForm}>
                     <input onChange={this.handleNameChange} type="text" placeholder="Name"/>
