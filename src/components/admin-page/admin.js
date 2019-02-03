@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 class Admin extends Component {
     constructor() {
@@ -17,12 +18,17 @@ class Admin extends Component {
         }
     }
 
+    // Send the form data to the server via a POST.
     submitForm = (event) => {
         event.preventDefault();
         console.log(this.state.formStatus);
+        axios.post('/portfolio', this.state.formStatus).then(response => {
+            this.props.dispatch({type: 'FETCH_PROEJCTS'})
+        })
         
     }
 
+    // captures state of name
     handleNameChange = (event) => {
         this.setState({
             formStatus: {
@@ -32,6 +38,7 @@ class Admin extends Component {
         });
     }
 
+    // captures state of date
     handleDateChange = (event) => {
         this.setState({
             formStatus: {
@@ -41,6 +48,7 @@ class Admin extends Component {
         });
     }
 
+    // captures state of select drop down
     handleSelectChange = (event) => {
         this.setState ({
             formStatus: {
@@ -50,6 +58,7 @@ class Admin extends Component {
         });   
     }
 
+    // captures state of the thumbnail
     handleThumbnailChange = (event) => {
         this.setState ({
             formStatus: {
@@ -59,6 +68,7 @@ class Admin extends Component {
         });   
     }
 
+    // captures state of github url
     handleGitHubChange = (event) => {
         this.setState ({
             formStatus: {
@@ -68,6 +78,7 @@ class Admin extends Component {
         });   
     }
 
+    // captures state of website url
     handleWebsiteChange = (event) => {
         this.setState ({
             formStatus: {
@@ -77,6 +88,7 @@ class Admin extends Component {
         });   
     }
     
+    // captures state of description text
     handleDescriptionChange = (event) => {
         this.setState ({
             formStatus: {
@@ -94,7 +106,7 @@ class Admin extends Component {
                     <input onChange={this.handleNameChange} type="text" placeholder="Name"/>
                     <input onChange={this.handleDateChange} type="date" />
                     <select onChange={this.handleSelectChange} defaultValue={this.state.formStatus.tag_id} name="tags">
-                        <option disabled="disabled" selected="selected">Select a Tag</option>
+                        <option disabled selected>Select a Tag</option>
                         <option value="1">React</option>
                         <option value="2">jQuery</option>
                         <option value="3">Node</option>
@@ -113,4 +125,4 @@ class Admin extends Component {
     }
 }
 
-export default Admin;
+export default connect()(Admin);
