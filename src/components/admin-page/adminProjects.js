@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-// import AdminListItem from './adminListItem.js'
+import AdminListItem from './adminListItem.js'
 
 class adminProjects extends Component {
     componentDidMount() {
@@ -15,17 +15,13 @@ class adminProjects extends Component {
         return (
             <table>
                 <thead>
-                    <th>Thumbnail</th>
                     <th>Name</th>
-                    <th>Github</th>
-                    <th>Website</th>
-                    <th>Tags</th>
-                    <th>Description</th>
+                    <th>Delete</th>
                 </thead>
                 <tbody>
-                    {/* {this.props.reduxStore.projects.map(project => {
+                    {this.props.reduxStore.projects.map(project => {
                         return <AdminListItem key={project.id} project={project} />
-                    })} */}
+                    })}
                 </tbody>
             </table>
         );
