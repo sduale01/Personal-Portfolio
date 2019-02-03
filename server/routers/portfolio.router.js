@@ -3,6 +3,7 @@ const pool = require('../modules/pool.js');
 
 const router = express.Router();
 
+// GET data from database
 router.get('/', (req,res) => {
     const queryText = `SELECT * FROM "tags" JOIN "projects" ON "projects"."tag_id" = "tags"."id" ORDER BY "projects"."id";`
     pool.query(queryText).then(response => {
@@ -15,6 +16,7 @@ router.get('/', (req,res) => {
     });
 });
 
+// POST to database
 router.post('/', (req,res) => {
     console.log('req.body is:', req.body);
     
@@ -33,6 +35,18 @@ router.post('/', (req,res) => {
         res.sendStatus(200);
     }).catch(error => {
         console.log('error in POST', error);
+        res.sendStatus(500);
+    });
+});
+
+// DELETE from database
+router.delete('/:id', (req,res) => {
+    console.log(req.params);
+    const queryText = `DELETE FROM "projects" WHERE "id" = $1`;
+    pool.query(queryText, [req.params.id]).then(response => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('error in DELETE', error);
         res.sendStatus(500);
     });
 })
