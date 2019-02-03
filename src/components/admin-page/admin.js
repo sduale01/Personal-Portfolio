@@ -24,8 +24,9 @@ class Admin extends Component {
         console.log(this.state.formStatus);
         axios.post('/portfolio', this.state.formStatus).then(response => {
             this.props.dispatch({type: 'FETCH_PROEJCTS'})
-        })
-        
+        }).catch(error => {
+            console.log('error in POST', error);
+        });
     }
 
     // captures state of name
