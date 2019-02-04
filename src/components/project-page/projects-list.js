@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import ListItem from './listItem.js'
+import ListItem from './listItem.js';
 
 class ProjectList extends Component {
     componentDidMount() {
@@ -14,10 +14,10 @@ class ProjectList extends Component {
     render() {
         return (
 
-            <div className="projects-list">
-                {this.props.reduxStore.projects.map(project => {
-                        return <ListItem key={project.id} project={project} />
-                    })}
+            <div className="projectslist">
+                {this.props.reduxStore.projects.map(project =>
+                         <ListItem key={project.id} project={project} />
+                    )}
             </div>
         );
     }
