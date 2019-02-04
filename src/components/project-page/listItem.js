@@ -13,14 +13,18 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
-const styles = {
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
     card: {
       maxWidth: 345,
     },
     media: {
-      height: 140,
+      height: 240,
     },
-  };
+  });
 
 class listItem extends Component {
     render() {
@@ -30,16 +34,20 @@ class listItem extends Component {
         
         let webTag;
         if(this.props.project.website === ''){
-            webTag = <div></div>;
+            webTag = <div></div>
         } else {
-            webTag = <a href={this.props.project.website}>Website</a>
+            webTag = <Button href={this.props.project.website} size="small" color="primary">
+                        Website
+                    </Button>
         }
 
         let gitTag;
         if(this.props.project.github === ''){
             gitTag = <div></div>
         }else {
-            gitTag = <a href={this.props.project.github}>GitHub</a>
+            gitTag = <Button href={this.props.project.github} size="small" color="primary">
+                        GitHub
+                    </Button>
         }
         return (
             <Card className={classes.card}>
@@ -47,38 +55,22 @@ class listItem extends Component {
                     <CardMedia
                     className={classes.media}
                     image={this.props.project.thumbnail}
-                    title="Contemplative Reptile"
+                    title="Project Image"
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
+                        {this.props.project.name}
                     </Typography>
                     <Typography component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
+                        {this.props.project.description}
                     </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
-                    Share
-                    </Button>
-                    <Button size="small" color="primary">
-                    Learn More
-                    </Button>
+                    {gitTag}
+                    {webTag}      
                 </CardActions>
             </Card>
-
-
-
-            // <tr>
-            //     <td><img src={this.props.project.thumbnail} /></td>
-            //     <td>{this.props.project.name}</td>
-            //     <td>{gitTag}</td>
-            //     <td>{webTag}</td>
-            //     <td>{this.props.project.tag_name}</td>
-            //     <td>{this.props.project.description}</td>
-            // </tr>
         );
     }
 }

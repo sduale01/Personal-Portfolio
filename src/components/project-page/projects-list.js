@@ -13,21 +13,6 @@ class ProjectList extends Component {
     }
     render() {
         return (
-            // <table>
-            //     <thead>
-            //         <th>Thumbnail</th>
-            //         <th>Name</th>
-            //         <th>Github</th>
-            //         <th>Website</th>
-            //         <th>Tags</th>
-            //         <th>Description</th>
-            //     </thead>
-            //     <tbody>
-            //         {this.props.reduxStore.projects.map(project => {
-            //             return <ListItem key={project.id} project={project} />
-            //         })}
-            //     </tbody>
-            // </table>
 
             <div className="projects-list">
                 {this.props.reduxStore.projects.map(project => {
